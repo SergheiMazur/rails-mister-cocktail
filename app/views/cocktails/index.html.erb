@@ -1,7 +1,18 @@
-<h1>Cocktails#index</h1>
-<p>Find me in app/views/cocktails/index.html.erb</p>
-
+<div class="row">
+  <% random_numbers = (1..10).to_a %>
 <% @cocktails.each do |cocktail| %>
-  <h2><%= cocktail.name %></h2>
-  <%= link_to "details", cocktail_path(cocktail) %>
-<% end %>
+  <div class="card col-xs-3" style="width: 33rem;">
+    <% random_number = random_numbers.sample %>
+    <% random_numbers.delete_if {|v|  v == random_number} %>
+    <% image_link = random_number.to_s + '.jpg' %>
+    <%= image_tag(image_link, :alt => "image", :class => "card-img-top", :size => 200) %>
+    <div class="card-body">
+      <h5 class="card-title"><%= cocktail.name %></h5>
+      <%= link_to "details", cocktail_path(cocktail), :class => "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+

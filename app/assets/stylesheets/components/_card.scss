@@ -1,0 +1,24 @@
+.card {
+  background-color: #9fadc4;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid black;
+  opacity: 80%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, .5);
+  h5 {
+    color: white;
+    font-weight: bold;
+  }
+  img {
+    width: 100%;
+    border: 1px solid #8a4419;
+    border-style: inset;
+  }
+}
+
+.card:hover {
+  background-color: #8c96a5;
+  position: relative;
+             top: -5px;
+}

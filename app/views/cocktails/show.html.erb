@@ -8,6 +8,5 @@
 <% @cocktail.doses.each do |dose| %>
   <p><%= dose.description %></p>
   <p><%= dose.ingredient.name %></p>
-  <p><td><%= button_to 'Delete', cocktail_dose_path( cocktail_id: @cocktail.id, id: dose.id) , :method=>:delete  %></td></p>
   <br>
 <% end %>

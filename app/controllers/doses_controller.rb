@@ -1,5 +1,5 @@
 class DosesController < ApplicationController
-  before_action :set_cocktail, only: [:create, :new, :show, :edit, :update, :destroy]
+  before_action :set_cocktail, only: [:create, :new, :show, :edit, :update]
 
   def index
   end
@@ -13,12 +13,16 @@ class DosesController < ApplicationController
     @dose = Dose.new(
       description: dose_params["description"]
     )
-    @dose.ingredient = Ingredient.find(dose_params["ingredient_id"])
-    @dose.cocktail = @cocktail
-    if @dose.save
-      redirect_to cocktail_path(@cocktail)
-    else
+    if dose_params["ingredient_id"].nil? || dose_params["ingredient_id"].empty?
       render :new
+    else
+      @dose.ingredient = Ingredient.find(dose_params["ingredient_id"])
+      @dose.cocktail = @cocktail
+      if @dose.save
+        redirect_to cocktail_path(@cocktail)
+      else
+        render :new
+      end
     end
   end
 
@@ -28,7 +32,7 @@ class DosesController < ApplicationController
   def destroy
     @dose = Dose.find(params[:id])
     @dose.destroy
-    redirect_to cocktail_path(@cocktail)
+    redirect_to cocktails_path
   end
 
   def show
