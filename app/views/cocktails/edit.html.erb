@@ -1,2 +1,6 @@
-<h1>Cocktails#edit</h1>
-<p>Find me in app/views/cocktails/edit.html.erb</p>
+<h1>Update cocktail</h1>
+
+<%= simple_form_for @cocktail do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "update cocktail", class: "btn btn-primary" %>
+<% end %>

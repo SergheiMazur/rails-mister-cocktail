@@ -1,12 +1,16 @@
-<h1><%= @cocktail.name %></h1>
+<h1> <b>Cocktail name:</b>   <%= @cocktail.name %> </h1>
+<div class="row">
+  <%= link_to "Edit cocktail name" ,edit_cocktail_path(@cocktail), :class=>"btn btn-primary col-xs-offset-1 col-xs-2" %>
+  <%= link_to 'Delete cocktail', cocktail_path(@cocktail), :class => "btn btn-danger", :method => 'delete', :class=>"btn btn-danger col-xs-offset-6 col-xs-2"%>
+</div>
 
-
-<%= link_to "add new dose", new_cocktail_dose_path(@cocktail) %>
-
-
+<hr>
 
 <% @cocktail.doses.each do |dose| %>
-  <p><%= dose.description %></p>
-  <p><%= dose.ingredient.name %></p>
-  <br>
+<div class="card">
+  <h4> <b>Dose:</b>  <%= dose.description %> <b>Ingredient:</b>  <%= dose.ingredient.name %></h4>
+
+  <%= link_to 'Delete', dose_path(dose, :cocktail_id => @cocktail.id), :class => "btn btn-danger", :method => 'delete'%>
+</div>
 <% end %>
+<%= link_to "add new dose", new_cocktail_dose_path(@cocktail), :class=>"btn btn-primary col-xs-offset-2 col-xs-8" %>
